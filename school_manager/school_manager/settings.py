@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-dev-only-change-in-pr
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.platform.sh']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.platform.sh', '.platformsh.site']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
