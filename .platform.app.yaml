@@ -1,0 +1,29 @@
+name: school-manager
+type: python:3.11
+disk: 512
+
+relationships:
+    database: "db:postgresql"
+
+web:
+    commands:
+        start: "gunicorn school_manager.wsgi:application"
+    locations:
+        "/":
+            passthru: true
+        "/static":
+            root: "staticfiles"
+            expires: 1h
+            allow: true
+
+hooks:
+    build: |
+        pip install -r requirements.txt
+        python manage.py collectstatic --no-input
+    deploy: |
+        python manage.py migrate
+
+mounts:
+    "db.sqlite3":
+        source: local
+        source_path: sqlite
