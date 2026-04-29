@@ -4,18 +4,18 @@ A Django web application for managing a three-level school hierarchy: **School �
 
 ## Live App
 
-**[Your Platform.sh URL here]** — replace this after deployment.
+**https://main-bvxea6i-y4ssttyekx4hq.us.platformsh.site/**
 
 ## Project Structure
 
 ```
-school_manager/          <- top-level Django config package
-    __init__.py
+school\_manager/          <- top-level Django config package
+    \_\_init\_\_.py
     settings.py
     urls.py
     wsgi.py
 schools/                 <- app package with all models, views, and templates
-    __init__.py
+    \_\_init\_\_.py
     admin.py
     apps.py
     models.py
@@ -33,11 +33,11 @@ requirements.txt
 
 ## Models
 
-| Model | Key Fields |
-|-------|-----------|
-| School | name, address, principal, founded |
-| Classroom | name, subject, teacher, room_number, FK→School |
-| Student | first_name, last_name, student_id, email, enrolled, FK→Classroom |
+|Model|Key Fields|
+|-|-|
+|School|name, address, principal, founded|
+|Classroom|name, subject, teacher, room\_number, FK→School|
+|Student|first\_name, last\_name, student\_id, email, enrolled, FK→Classroom|
 
 ## Local Setup
 
@@ -64,7 +64,7 @@ Log in and deploy:
 
 ```bash
 platform login
-platform project:create --title "School Manager" --region us-3.platform.sh
+platform project:create --title "School Manager" --region
 git init
 git add .
 git commit -m "Initial commit"
@@ -80,6 +80,7 @@ platform ssh -- python manage.py createsuperuser
 ## GitHub
 
 ```bash
-git remote add origin https://github.com/YOUR_USERNAME/school-manager.git
+git remote add origin https://github.com/YOUR\_USERNAME/school-manager.git
 git push -u origin main
 ```
+
