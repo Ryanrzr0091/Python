@@ -1,0 +1,25 @@
+applications:
+  school-manager:
+    type: python:3.14
+    source:
+      root: school_manager
+    hooks:
+      build: |
+        set -ex
+        pip install -r requirements.txt
+        # Export DATABASE_URL for Django to use environment variable for DB connection
+        echo >> .environment 'export DATABASE_URL="$DB_SCHEME://$DB_USERNAME:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_PATH"'
+    web:
+      commands:
+        start: python manage.py runserver 0.0.0.0:$PORT
+    relationships:
+      db: {}
+
+services:
+  db:
+    type: postgresql:18
+
+routes:
+  https://{default}/:
+    type: upstream
+    upstream: school-manager:http
